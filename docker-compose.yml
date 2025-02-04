@@ -1,18 +1,18 @@
 version: '3.5'
 services:
-  nginx-red:
+  nginx-blue:
     build:
       context: ./
       dockerfile: ./Dockerfile_nginx
-    container_name: nginx-red
-    hostname: nginx-red
+    container_name: nginx-blue
+    hostname: nginx-blue
     restart: always
     ports:
       - 8088:80
     environment:
       - HTTP_PORT=80 
     volumes:
-      - ./nginx/nginx-red.conf:/etc/nginx/nginx.conf.template:Z
+      - ./nginx/nginx-blue.conf:/etc/nginx/nginx.conf.template:Z
       - www:/www
     networks:
       docker:
