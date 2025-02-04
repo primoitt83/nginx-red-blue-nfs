@@ -1,0 +1,32 @@
+version: '3.5'
+services:
+  nginx-red:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile_nginx
+    container_name: nginx-red
+    hostname: nginx-red
+    restart: always
+    ports:
+      - 8088:80
+    environment:
+      - HTTP_PORT=80 
+    volumes:
+      - ./nginx/nginx-red.conf:/etc/nginx/nginx.conf.template:Z
+      - www:/www
+    networks:
+      docker:
+    logging:
+      options:
+        max-size: 100M
+
+volumes:
+  www:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.50.174,rw
+      device: :/mnt/nfs/www
+
+networks:
+  docker:

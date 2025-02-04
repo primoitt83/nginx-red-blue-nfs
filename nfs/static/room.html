@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<body onload="acceptParam()">
+ 
+<center>
+<textarea id='p' rows="15" name="room" cols="50">
+
+</textarea>
+</center>
+
+
+<script>
+function acceptParam() {
+  var hashParams = window.location.href.substr(1).split('?'); // substr(1) to remove the `#`
+      hashParams = hashParams[1].split('&');
+      var p = hashParams[0].split('=');
+      document.getElementById('p').value = p[1];
+ }
+</script>
+
+
+</body>
+</html>
